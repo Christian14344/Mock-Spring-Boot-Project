@@ -20,11 +20,11 @@ public class Employee {
     @Column(nullable = false)
     private String lastName;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinTable(joinColumns = @JoinColumn(name="companyid")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(joinColumns = @JoinColumn(name="companyid")
 //            , inverseJoinColumns = @JoinColumn(name = "credentials_id")
-//    )
-//    private Company company;
+    )
+    private Company company;
 
 
     public Employee(){

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("company")
@@ -34,4 +35,14 @@ public class CompanyController {
         return new ResponseEntity<>(company, HttpStatus.ACCEPTED);
     }
 
+    @PutMapping("edit/{id}")
+    public Optional<Company> editCompany(@PathVariable int id, @RequestBody Company company){
+        return companyService.editCompany(id, company);
+    }
+
+    @DeleteMapping("delete/{compID}")
+    public String deleteCompany(@PathVariable int compID){
+        companyService.deleteCompany(compID);
+        return "Company "+compID+" deleted";
+    }
 }

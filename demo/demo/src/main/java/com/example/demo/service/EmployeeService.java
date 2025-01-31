@@ -1,12 +1,15 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Company;
 import com.example.demo.entity.Employee;
 import com.example.demo.repository.EmployeeRepo;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -14,6 +17,7 @@ public class EmployeeService {
 
     @Autowired
     EmployeeRepo employeeRepo;
+
 
     public EmployeeService employeeService(){
         this.employeeRepo = employeeRepo;
@@ -53,5 +57,11 @@ public class EmployeeService {
             throw new ServiceException("employee not found");
         }
     }
+
+    public void addEmployeeWithCompID(Employee employee, int id) {
+//        employeeRepo.save(employee);
+//        Company company = employee.getCompany();
+    }
+
 
 }

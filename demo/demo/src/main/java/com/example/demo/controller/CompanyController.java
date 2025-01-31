@@ -23,6 +23,11 @@ public class CompanyController {
         return companyService.getCompanies();
     }
 
+    @GetMapping("{compID}")
+    public Company getCompany(@PathVariable int compID){
+        return companyService.getCompany(compID);
+    }
+
     @PostMapping("add")
     public ResponseEntity<Company> addCompany(@RequestBody Company company){
         companyService.addCompany(company);

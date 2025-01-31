@@ -23,6 +23,10 @@ public class CompanyService {
         return companyRepo.findAll();
     }
 
+    public Company getCompany(int compID){
+        return companyRepo.findById(compID).orElseThrow(()-> new RuntimeException("company not found"));
+    }
+
 
     public Company addCompany(Company company){
         return companyRepo.save(company);

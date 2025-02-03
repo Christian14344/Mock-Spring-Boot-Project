@@ -20,11 +20,17 @@ public class Employee {
     @Column(nullable = false)
     private String lastName;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(joinColumns = @JoinColumn(name="companyid")
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinTable(joinColumns = @JoinColumn(name="companyid", unique = false)
 //            , inverseJoinColumns = @JoinColumn(name = "credentials_id")
-    )
+//    )
+//    private Company company;
+
+
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
 
 
     public Employee(){
@@ -69,6 +75,11 @@ public class Employee {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
 }
 
 

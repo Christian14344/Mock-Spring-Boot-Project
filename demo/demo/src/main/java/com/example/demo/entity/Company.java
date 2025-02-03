@@ -1,8 +1,8 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "company")
@@ -13,6 +13,8 @@ public class Company {
     private String companyName;
 
 
+    @OneToMany(mappedBy = "company")
+    private List<Employee> employees;
 
     public Company() {
 

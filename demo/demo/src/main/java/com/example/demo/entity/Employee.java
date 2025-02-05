@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.ToString;
@@ -12,6 +13,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @JsonIgnore
     private int id;
     @Column(nullable = false)
     private String firstName;
@@ -20,11 +22,6 @@ public class Employee {
     @Column(nullable = false)
     private String lastName;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinTable(joinColumns = @JoinColumn(name="companyid", unique = false)
-//            , inverseJoinColumns = @JoinColumn(name = "credentials_id")
-//    )
-//    private Company company;
 
 
     @ManyToOne

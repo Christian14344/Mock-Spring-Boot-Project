@@ -6,23 +6,29 @@
 //@Entity
 //public class Credential {
 //
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
 //    private String username;
 //    private String password;
 //
-//    @Id
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinTable(joinColumns = @JoinColumn(name="employee_id"))
-//    private String id;
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private String companyID;
+//    @OneToOne
+//    @JoinColumn(name = "employee_id", nullable = false) // Correct the join column
+//    private Employee employee; // Instead of String id, use Employee
 //
 //    public Credential() {
 //
 //    }
 //
-//    public Credential(String username, String password) {
+//    public Credential(int id, String username, String password, Employee employee) {
+//        this.id = id;
 //        this.username = username;
 //        this.password = password;
+//        this.employee = employee;
+//    }
+//
+//    public int getId() {
+//        return id;
 //    }
 //
 //    public String getUsername() {
@@ -33,11 +39,23 @@
 //        return password;
 //    }
 //
+//    public Employee getEmployee() {
+//        return employee;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
+//
 //    public void setUsername(String username) {
 //        this.username = username;
 //    }
 //
 //    public void setPassword(String password) {
 //        this.password = password;
+//    }
+//
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
 //    }
 //}

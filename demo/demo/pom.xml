@@ -60,6 +60,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.boot</groupId>-->
@@ -71,6 +72,8 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
+=======
+>>>>>>> 269c967 (updated files)
 	</dependencies>
 
 	<build>

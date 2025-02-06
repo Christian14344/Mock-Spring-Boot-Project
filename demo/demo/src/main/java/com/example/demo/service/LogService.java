@@ -116,5 +116,5 @@ public class LogService {
 
         logsRepo.deleteById(logID);
     }
-    
+
 }

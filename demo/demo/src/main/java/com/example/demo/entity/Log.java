@@ -14,7 +14,7 @@ public class Log {
     private double latitude;
 
 
-//    @ManyToOne(cascade = CascadeType.ALL)
+    //    @ManyToOne(cascade = CascadeType.ALL)
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false) // Correct the join column
     private Employee employee; // Instead of String id, use Employee

@@ -1,13 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Company;
-import com.example.demo.entity.Employee;
-import com.example.demo.entity.Log;
 import com.example.demo.repository.CompanyRepo;
 import com.example.demo.repository.EmployeeRepo;
 import com.example.demo.repository.LogsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

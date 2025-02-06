@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.ToString;
@@ -13,7 +12,6 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @JsonIgnore
     private int id;
     @Column(nullable = false)
     private String firstName;
@@ -21,6 +19,10 @@ public class Employee {
     private String middleName;
     @Column(nullable = false)
     private String lastName;
+    @Column(nullable = false)
+    private String userName;
+    @Column(nullable = false)
+    private String password;
 
 
 
@@ -34,12 +36,16 @@ public class Employee {
 
     }
 
-    public Employee(int id, String firstName, String middleName, String lastName) {
+    public Employee(int id, String firstName, String middleName, String lastName, String userName, String password, Company company) {
         this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+        this.company = company;
     }
+
 
     public int getId() {
         return id;
@@ -55,6 +61,18 @@ public class Employee {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Company getCompany() {
+        return company;
     }
 
     public void setId(int id) {
@@ -73,9 +91,19 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setCompany(Company company) {
         this.company = company;
     }
+
+
 
 }
 

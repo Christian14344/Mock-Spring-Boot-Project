@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.EmployeeDTO;
+import com.example.demo.dto.LogDetailsDTO;
 import com.example.demo.entity.Company;
 import com.example.demo.entity.Employee;
 import com.example.demo.entity.Log;
@@ -33,27 +35,26 @@ public class CompanyController {
     //EMPLOYEES CONTROLLER
     //fetch all employees from a certain company
     @GetMapping("{companyId}/employees")
-    public List<Employee> getEmployeesByCompany(@PathVariable int companyId) {
+    public List<EmployeeDTO> getEmployeesByCompany(@PathVariable int companyId) {
         return employeeService.getEmployeesByCompanyId(companyId);
     }
 
     //fetch a single employee from a company
     @GetMapping("{companyId}/employees/{employeeId}")
-    public Employee getEmployee(@PathVariable int companyId, @PathVariable int employeeId) {
+    public EmployeeDTO getEmployee(@PathVariable int companyId, @PathVariable int employeeId) {
         return employeeService.getEmployeeByCompany(companyId, employeeId);
     }
 
     //add an employee to a company
     @PostMapping("{companyId}/employees/")
-    public ResponseEntity<Employee> addEmployee(@PathVariable int companyId, @RequestBody Employee employee){
-        employeeService.addEmployee(companyId, employee);
-        return new ResponseEntity<>(employee, HttpStatus.ACCEPTED);
+    public ResponseEntity<EmployeeDTO> addEmployee(@PathVariable int companyId, @RequestBody Employee employee){
+        return new ResponseEntity<>(employeeService.addEmployee(companyId, employee), HttpStatus.ACCEPTED);
     }
 
 
     //edit an employee from a company
     @PutMapping("{companyId}/employees/{employeeId}")
-    public Employee updateEmployee(@PathVariable int companyId, @PathVariable int employeeId, @RequestBody Employee updatedEmployee) {
+    public EmployeeDTO updateEmployee(@PathVariable int companyId, @PathVariable int employeeId, @RequestBody Employee updatedEmployee) {
         return employeeService.updateEmployeeDetails(companyId, employeeId, updatedEmployee);
     }
 
@@ -63,7 +64,6 @@ public class CompanyController {
         employeeService.deleteEmployee(companyId, employeeId);
         return "Employee no: "+employeeId+" deleted";
     }
-
 
 
     //COMPANY CONTROLLER
@@ -103,28 +103,22 @@ public class CompanyController {
     //CONTROLLER FOR LOGS
     //get all logs from a company
     @GetMapping("{compID}/logs")
-    public  List<Log> fetchLogs(@PathVariable int compID){
+    public List<LogDetailsDTO> fetchLogs(@PathVariable int compID){
         return logService.getAllLogsByCompanyId(compID);
     }
 
     //get a certain employee logs
     @GetMapping("{compID}/employees/{empID}/logs")
-    public List<Log> fetchEmployeeLogs(@PathVariable int compID, @PathVariable int empID){
-        return  logService.getEmployeeLogs(compID, empID);
+    public List<LogDetailsDTO> fetchEmployeeLogs(@PathVariable int compID, @PathVariable int empID){
+        return  logService.getEmployeeLogsToDTO(compID, empID);
     }
 
     //send logs from an employee
     @PostMapping("{compID}/employees/{empID}/logs")
-    public ResponseEntity<Log> sendLog(@PathVariable int compID, @PathVariable int empID, @RequestBody Log log){
-        logService.sendLogs(compID, empID, log);
-        return new ResponseEntity<>(log, HttpStatus.ACCEPTED);
+    public ResponseEntity<LogDetailsDTO> sendLog(@PathVariable int compID, @PathVariable int empID, @RequestBody Log log){
+        return new ResponseEntity<>(logService.sendLogs(compID, empID, log),HttpStatus.ACCEPTED);
     }
 
-    //view specific log instance from an employee
-    @GetMapping("{compID}/employees/{empID}/logs/{logID}")
-    public Optional<Log> viewSingleLogFromEmployee(@PathVariable int compID, @PathVariable int empID, @PathVariable int logID){
-        return logService.fetchSingleLogByEmployee(compID, empID, logID);
-    }
 
     //delete log instance from an employee
     @DeleteMapping("{compID}/employees/{empID}/logs/{logID}")

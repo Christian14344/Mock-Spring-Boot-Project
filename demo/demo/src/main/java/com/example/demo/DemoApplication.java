@@ -10,8 +10,4 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 269c967 (updated files)
 }

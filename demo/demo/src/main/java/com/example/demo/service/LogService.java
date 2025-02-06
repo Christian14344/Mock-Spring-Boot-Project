@@ -116,19 +116,5 @@ public class LogService {
 
         logsRepo.deleteById(logID);
     }
-
-
-    public Optional<Log> fetchSingleLogByEmployee(int compID, int empID, int logID) {
-
-        logsRepo.findById(logID)
-                .orElseThrow(()-> new RuntimeException("Log ID does not exist"));
-
-        companyRepo.findById(compID)
-                .orElseThrow(() -> new RuntimeException("Company ID does not exist"));
-
-        employeeRepo.findByCompany_CompanyIDAndId(compID, empID)
-                .orElseThrow(() -> new RuntimeException("Employee not found in company"));
-
-        return logsRepo.findById(logID);
-    }
+    
 }
